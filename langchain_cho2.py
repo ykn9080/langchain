@@ -1,12 +1,12 @@
 
 
 import streamlit as st
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import os
 from langchain.chat_models import ChatOpenAI
 from langchain.llms import OpenAI
 
-load_dotenv()
+# load_dotenv()
 #api_key = os.getenv('OPENAI_API_KEY')
 # # print(api_key)
 # # chatModel = ChatOpenAI(openai_api_key=api_key)
