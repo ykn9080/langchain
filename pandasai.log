@@ -1,0 +1,292 @@
+2024-01-09 16:38:35 [INFO] Question: Age와 Fare간의 상관관계를 보여주기 위해 히트맵을 그려줘
+2024-01-09 16:38:35 [INFO] Running PandasAI with openai LLM...
+2024-01-09 16:38:35 [INFO] Prompt ID: 8ed694d4-da22-4b76-95fc-ba04ab493d88
+2024-01-09 16:38:35 [INFO] Executing Step 0: CacheLookup
+2024-01-09 16:38:35 [INFO] Executing Step 1: PromptGeneration
+2024-01-09 16:38:35 [INFO] Using prompt: <dataframe>
+dfs[0]:891x12
+PassengerId,Survived,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+1,0,3,"Braund, Mr. Owen Harris",male,22.0,1,0,A/5 21171,7.25,,S
+2,1,1,"Cumings, Mrs. John Bradley (Florence Briggs Thayer)",female,38.0,1,0,PC 17599,71.2833,C85,C
+3,1,3,"Heikkinen, Miss. Laina",female,26.0,0,0,STON/O2. 3101282,7.925,,S
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: Age와 Fare간의 상관관계를 보여주기 위해 히트맵을 그려줘
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-01-09 16:38:35 [INFO] Executing Step 2: CodeGenerator
+2024-01-09 16:38:39 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-01-09 16:38:39 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+sns.heatmap(df[['Age', 'Fare']].corr(), annot=True, cmap='coolwarm')
+
+# Declare result var
+result = {"type": "plot", "value": "heatmap.png"}
+            ```
+            
+2024-01-09 16:38:39 [INFO] Executing Step 3: CachePopulation
+2024-01-09 16:38:39 [INFO] Executing Step 4: CodeExecution
+2024-01-09 16:38:39 [INFO] Saving charts to /home/yknam/ipykernel/exports/charts/temp_chart.png
+2024-01-09 16:38:39 [INFO] 
+Code running:
+```
+df = dfs[0]
+sns.heatmap(df[['Age', 'Fare']].corr(), annot=True, cmap='coolwarm')
+result = {'type': 'plot', 'value': '/home/yknam/ipykernel/exports/charts/temp_chart.png'}
+        ```
+2024-01-09 16:38:39 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-01-09 16:38:39 [ERROR] Failed with error: Traceback (most recent call last):
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/helpers/optional.py", line 92, in import_dependency
+    module = importlib.import_module(name)
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'seaborn'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/pipelines/smart_datalake_chat/code_execution.py", line 46, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/helpers/query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 194, in execute_code
+    environment: dict = self._get_environment()
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 249, in _get_environment
+    **{
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 251, in <dictcomp>
+    if hasattr(import_dependency(lib["module"]), lib["name"])
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/helpers/optional.py", line 95, in import_dependency
+    raise ImportError(msg) from exc
+ImportError: Missing optional dependency 'seaborn'.  Use pip or conda to install seaborn.
+. Retrying
+2024-01-09 16:38:39 [INFO] Using prompt: <dataframe>
+dfs[0]:891x12
+PassengerId,Survived,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+1,0,3,"Braund, Mr. Owen Harris",male,22.0,1,0,A/5 21171,7.25,,S
+2,1,1,"Cumings, Mrs. John Bradley (Florence Briggs Thayer)",female,38.0,1,0,PC 17599,71.2833,C85,C
+3,1,3,"Heikkinen, Miss. Laina",female,26.0,0,0,STON/O2. 3101282,7.925,,S
+</dataframe>
+
+The user asked the following question:
+Q: Age와 Fare간의 상관관계를 보여주기 위해 히트맵을 그려줘
+
+You generated this python code:
+# TODO: import the required dependencies
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+sns.heatmap(df[['Age', 'Fare']].corr(), annot=True, cmap='coolwarm')
+
+# Declare result var
+result = {"type": "plot", "value": "heatmap.png"}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/helpers/optional.py", line 92, in import_dependency
+    module = importlib.import_module(name)
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'seaborn'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/pipelines/smart_datalake_chat/code_execution.py", line 46, in execute
+    result = pipeline_context.query_exec_tracker.execute_func(
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/helpers/query_exec_tracker.py", line 128, in execute_func
+    result = function(*args, **kwargs)
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 194, in execute_code
+    environment: dict = self._get_environment()
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 249, in _get_environment
+    **{
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 251, in <dictcomp>
+    if hasattr(import_dependency(lib["module"]), lib["name"])
+  File "/home/yknam/anaconda3/envs/langchain/lib/python3.10/site-packages/pandasai/helpers/optional.py", line 95, in import_dependency
+    raise ImportError(msg) from exc
+ImportError: Missing optional dependency 'seaborn'.  Use pip or conda to install seaborn.
+
+
+Fix the python code above and return the new python code:
+2024-01-09 16:38:46 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-01-09 16:38:46 [INFO] Saving charts to /home/yknam/ipykernel/exports/charts/temp_chart.png
+2024-01-09 16:38:46 [INFO] 
+Code running:
+```
+df = dfs[0]
+plt.imshow(df[['Age', 'Fare']].corr(), cmap='coolwarm', aspect='auto')
+plt.colorbar()
+plt.xticks(range(2), ['Age', 'Fare'])
+plt.yticks(range(2), ['Age', 'Fare'])
+plt.title('Correlation Heatmap')
+plt.savefig('/home/yknam/ipykernel/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': '/home/yknam/ipykernel/exports/charts/temp_chart.png'}
+        ```
+2024-01-09 16:38:46 [INFO] Executing Step 5: ResultValidation
+2024-01-09 16:38:46 [INFO] Answer: {'type': 'plot', 'value': '/home/yknam/ipykernel/exports/charts/temp_chart.png'}
+2024-01-09 16:38:46 [INFO] Executed in: 11.795986652374268s
+2024-01-09 16:38:46 [INFO] Executing Step 6: ResultParsing
+2024-01-09 16:41:22 [INFO] Question: Age에서 누가 제일 많이 survived했을까요
+2024-01-09 16:41:22 [INFO] Running PandasAI with openai LLM...
+2024-01-09 16:41:22 [INFO] Prompt ID: 89ac15cd-9fd1-4025-845e-16323dc88518
+2024-01-09 16:41:22 [INFO] Executing Step 0: CacheLookup
+2024-01-09 16:41:22 [INFO] Executing Step 1: PromptGeneration
+2024-01-09 16:41:22 [INFO] Using prompt: <dataframe>
+dfs[0]:891x12
+PassengerId,Survived,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+1,0,3,"Braund, Mr. Owen Harris",male,22.0,1,0,A/5 21171,7.25,,S
+2,1,1,"Cumings, Mrs. John Bradley (Florence Briggs Thayer)",female,38.0,1,0,PC 17599,71.2833,C85,C
+3,1,3,"Heikkinen, Miss. Laina",female,26.0,0,0,STON/O2. 3101282,7.925,,S
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+```
+
+Q: Age에서 누가 제일 많이 survived했을까요
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+
+Generate python code and return full updated code:
+2024-01-09 16:41:22 [INFO] Executing Step 2: CodeGenerator
+2024-01-09 16:41:28 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-01-09 16:41:28 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+df = dfs[0]
+survived_ages = df[df['Survived'] == 1]['Age'].value_counts()
+most_survived_age = survived_ages.idxmax()
+
+# Declare result var
+result = {"type": "string", "value": f"The age with the most survivors is {most_survived_age}."}
+            ```
+            
+2024-01-09 16:41:28 [INFO] Executing Step 3: CachePopulation
+2024-01-09 16:41:28 [INFO] Executing Step 4: CodeExecution
+2024-01-09 16:41:28 [INFO] Saving charts to /home/yknam/ipykernel/exports/charts/temp_chart.png
+2024-01-09 16:41:28 [INFO] 
+Code running:
+```
+df = dfs[0]
+survived_ages = df[df['Survived'] == 1]['Age'].value_counts()
+most_survived_age = survived_ages.idxmax()
+result = {'type': 'string', 'value': f'The age with the most survivors is {most_survived_age}.'}
+        ```
+2024-01-09 16:41:28 [INFO] Executing Step 5: ResultValidation
+2024-01-09 16:41:28 [INFO] Answer: {'type': 'string', 'value': 'The age with the most survivors is 24.0.'}
+2024-01-09 16:41:28 [INFO] Executed in: 5.804263591766357s
+2024-01-09 16:41:28 [INFO] Executing Step 6: ResultParsing
+2024-01-09 16:42:02 [INFO] Question: Age에서 누가 제일 많이 survived했을까요
+2024-01-09 16:42:02 [INFO] Running PandasAI with openai LLM...
+2024-01-09 16:42:02 [INFO] Prompt ID: 6c486dae-6fbe-4321-97b8-d9f6fd621635
+2024-01-09 16:42:02 [INFO] Executing Step 0: CacheLookup
+2024-01-09 16:42:02 [INFO] Using cached response
+2024-01-09 16:42:02 [INFO] Executing Step 1: PromptGeneration
+2024-01-09 16:42:02 [INFO] Executing Step 2: CodeGenerator
+2024-01-09 16:42:02 [INFO] Executing Step 3: CachePopulation
+2024-01-09 16:42:02 [INFO] Executing Step 4: CodeExecution
+2024-01-09 16:42:02 [INFO] Saving charts to /home/yknam/ipykernel/exports/charts/temp_chart.png
+2024-01-09 16:42:02 [INFO] 
+Code running:
+```
+df = dfs[0]
+survived_ages = df[df['Survived'] == 1]['Age'].value_counts()
+most_survived_age = survived_ages.idxmax()
+result = {'type': 'string', 'value': f'The age with the most survivors is {most_survived_age}.'}
+        ```
+2024-01-09 16:42:02 [INFO] Executing Step 5: ResultValidation
+2024-01-09 16:42:02 [INFO] Answer: {'type': 'string', 'value': 'The age with the most survivors is 24.0.'}
+2024-01-09 16:42:02 [INFO] Executed in: 0.06464624404907227s
+2024-01-09 16:42:02 [INFO] Executing Step 6: ResultParsing
+2024-01-09 18:48:01 [INFO] Question: Age에서 누가 제일 많이 survived했을까요
+2024-01-09 18:48:01 [INFO] Running PandasAI with openai LLM...
+2024-01-09 18:48:01 [INFO] Prompt ID: 34ea7eef-2f0c-4ec1-be76-e793513dd52b
+2024-01-09 18:48:01 [INFO] Executing Step 0: CacheLookup
+2024-01-09 18:48:01 [INFO] Using cached response
+2024-01-09 18:48:01 [INFO] Executing Step 1: PromptGeneration
+2024-01-09 18:48:01 [INFO] Executing Step 2: CodeGenerator
+2024-01-09 18:48:01 [INFO] Executing Step 3: CachePopulation
+2024-01-09 18:48:01 [INFO] Executing Step 4: CodeExecution
+2024-01-09 18:48:01 [INFO] Saving charts to /home/yknam/ipykernel/exports/charts/temp_chart.png
+2024-01-09 18:48:01 [INFO] 
+Code running:
+```
+df = dfs[0]
+survived_ages = df[df['Survived'] == 1]['Age'].value_counts()
+most_survived_age = survived_ages.idxmax()
+result = {'type': 'string', 'value': f'The age with the most survivors is {most_survived_age}.'}
+        ```
+2024-01-09 18:48:01 [INFO] Executing Step 5: ResultValidation
+2024-01-09 18:48:01 [INFO] Answer: {'type': 'string', 'value': 'The age with the most survivors is 24.0.'}
+2024-01-09 18:48:01 [INFO] Executed in: 0.06470298767089844s
+2024-01-09 18:48:01 [INFO] Executing Step 6: ResultParsing
+2024-01-09 18:48:42 [INFO] Question: Age에서 누가 제일 많이 survived했을까요
+2024-01-09 18:48:42 [INFO] Running PandasAI with openai LLM...
+2024-01-09 18:48:42 [INFO] Prompt ID: cd2fe170-c327-4963-946f-b627d6c2ec77
+2024-01-09 18:48:42 [INFO] Executing Step 0: CacheLookup
+2024-01-09 18:48:42 [INFO] Using cached response
+2024-01-09 18:48:42 [INFO] Executing Step 1: PromptGeneration
+2024-01-09 18:48:42 [INFO] Executing Step 2: CodeGenerator
+2024-01-09 18:48:42 [INFO] Executing Step 3: CachePopulation
+2024-01-09 18:48:42 [INFO] Executing Step 4: CodeExecution
+2024-01-09 18:48:42 [INFO] Saving charts to /home/yknam/ipykernel/exports/charts/temp_chart.png
+2024-01-09 18:48:42 [INFO] 
+Code running:
+```
+df = dfs[0]
+survived_ages = df[df['Survived'] == 1]['Age'].value_counts()
+most_survived_age = survived_ages.idxmax()
+result = {'type': 'string', 'value': f'The age with the most survivors is {most_survived_age}.'}
+        ```
+2024-01-09 18:48:42 [INFO] Executing Step 5: ResultValidation
+2024-01-09 18:48:42 [INFO] Answer: {'type': 'string', 'value': 'The age with the most survivors is 24.0.'}
+2024-01-09 18:48:42 [INFO] Executed in: 0.06457185745239258s
+2024-01-09 18:48:42 [INFO] Executing Step 6: ResultParsing
