@@ -1,10 +1,10 @@
 from langchain.callbacks import StdOutCallbackHandler
 from langchain.chains import LLMChain
-from langchain import OpenAI
+from langchain_openai import OpenAI
 from langchain.prompts import PromptTemplate
-from api import apikey
+from config import getOpenai
 
-apikey.getOpenai()
+getOpenai()
 
 handler = StdOutCallbackHandler()
 llm = OpenAI()
@@ -14,11 +14,12 @@ prompt = PromptTemplate.from_template("1 + {number} = ")
 # chain = LLMChain(llm=llm, prompt=prompt, callbacks=[handler])
 # chain.run(number=2)
 
-# # Use verbose flag: Then, let's use the `verbose` flag to achieve the same result
-# chain = LLMChain(llm=llm, prompt=prompt, verbose=True)
-# chain.run(number=2)
+# Use verbose flag: Then, let's use the `verbose` flag to achieve the same result
+chain = LLMChain(llm=llm, prompt=prompt, verbose=True)
+rtn = chain.run(number=2)
+print(rtn)
 
-# Request callbacks: Finally, let's use the request `callbacks` to achieve the same result
-chain = LLMChain(llm=llm, prompt=prompt)
-rtn = chain.run(number=2, callbacks=[handler])
+# # Request callbacks: Finally, let's use the request `callbacks` to achieve the same result
+# chain = LLMChain(llm=llm, prompt=prompt)
+# rtn = chain.run(number=2, callbacks=[handler])
 # print(rtn)

@@ -3,13 +3,10 @@ from fastapi import FastAPI
 from langchain.prompts import ChatPromptTemplate
 from langchain.chat_models import ChatAnthropic, ChatOpenAI
 from langserve import add_routes
+from apikey import getOpenai
 import os
-from dotenv import load_dotenv
-import openai
 
-load_dotenv()
-api_key = os.getenv('OPENAI_API_KEY')
-os.environ["OPENAI_API_KEY"] = api_key
+api_key = getOpenai()
 os.environ["ANTHROPIC_API_KEY"] = api_key
 
 app = FastAPI(
@@ -41,4 +38,4 @@ add_routes(
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="localhost", port=8018)
+    uvicorn.run(app, host="0.0.0.0", port=8018)

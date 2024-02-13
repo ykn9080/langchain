@@ -1,5 +1,5 @@
 from embedchain import App
-from apikey import gethuggingface
+from config import gethuggingface
 
 gethuggingface()
 

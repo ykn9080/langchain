@@ -1,11 +1,12 @@
-# from langchain_openai import OpenAI
+
 from langchain.llms import OpenAI
+from langchain.load.dump import dumps
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
-from api import apikey
+from config import getOpenai
 
-apikey.getOpenai()
+getOpenai()
 llm = OpenAI(temperature=0)
 # Notice that "chat_history" is present in the prompt template
 template = """You are a nice chatbot having a conversation with a human.
@@ -25,6 +26,7 @@ conversation = LLMChain(
     memory=memory
 )
 # Notice that we just pass in the `question` variables - `chat_history` gets populated by memory
-conversation({"question": "hi"})
-conversation({"question": "What is your name?"})
-print(conversation({"question": "never mind, good to see you bye!"}))
+conversation({"question": "hi, my name is John. What is your name?"})
+conversation({"question": "How old are you? I was 24 years old last year?"})
+print(dumps(conversation(
+    {"question": "Do you remember my name and age?"}), pretty=True))

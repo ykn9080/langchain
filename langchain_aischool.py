@@ -17,7 +17,7 @@ load_dotenv()
 
 # col1,col2=st.columns([1,2])
 # with col1:
-title = st.text_input('이름생성명','online service')
+title = st.text_input('...관련 회사명찾기','online service')
 # with col2:
 #     #st.image('https://www.fool.com.au/wp-content/uploads/2019/12/Netflix-logo.jpg')
 #     st.title('Favorite *movies!* :sunglasses:')
@@ -32,7 +32,7 @@ from langchain.prompts.chat import ChatPromptTemplate
 
 # prompt=PromptTemplate.from_examples()
 # st.write(prompt)
-prompt=PromptTemplate.from_template("{product}를 만드는 회사의 이름을 추천해줘?")
+prompt=PromptTemplate.from_template("{product}관련 회사의 이름을 추천해줘?")
 
 if st.button('Send'):
     llm=OpenAI()

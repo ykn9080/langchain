@@ -54,6 +54,7 @@ contextlib2==21.6.0
 contourpy==1.1.1
 cron-descriptor==1.4.0
 croniter==1.4.1
+cryptography==42.0.2
 curl-cffi==0.5.10
 cycler==0.12.0
 dataclasses-json==0.6.3
@@ -132,6 +133,7 @@ importlib-metadata==6.11.0
 importlib-resources==6.0.0
 inflection==0.5.1
 ipykernel==6.22.0
+ipynb-py-convert==0.4.6
 ipython==8.13.2
 ipython-genutils==0.2.0
 ipython-sql==0.5.0
@@ -161,16 +163,17 @@ kaggle==1.5.16
 keras==2.15.0
 kiwisolver==1.4.5
 kubernetes==28.1.0
-langchain==0.0.336
+langchain==0.0.354
 langchain-cli==0.0.20
-langchain-community==0.0.7
-langchain-core==0.1.3
+langchain-community==0.0.13
+langchain-core==0.1.17
 langchain-experimental==0.0.37
 langchain-google-genai==0.0.5
+langchain-openai==0.0.5
 langcorn==0.0.22
 langdetect==1.0.9
 langserve==0.0.37
-langsmith==0.0.75
+langsmith==0.0.83
 lazy-object-proxy==1.9.0
 libclang==16.0.6
 limits==3.5.0
@@ -224,7 +227,7 @@ nvidia-nvjitlink-cu12==12.3.101
 nvidia-nvtx-cu12==12.1.105
 oauthlib==3.2.2
 onnxruntime==1.16.3
-openai==1.7.2
+openai==1.10.0
 opentelemetry-api==1.22.0
 opentelemetry-exporter-otlp-proto-common==1.22.0
 opentelemetry-exporter-otlp-proto-grpc==1.22.0
@@ -239,6 +242,7 @@ opt-einsum==3.3.0
 ordered-set==4.1.0
 orjson==3.9.10
 overrides==7.4.0
+p2j==1.3.2
 packaging==23.2
 pandas==1.5.3
 pandasai==1.5.13
@@ -271,7 +275,7 @@ pycodestyle==2.10.0
 pycparser==2.21
 pydantic==1.10.13
 pydeck==0.8.1b0
-Pygments==2.14.0
+Pygments @ file:///home/conda/feedstock_root/build_artifacts/pygments_1700607939962/work
 pymdown-extensions==10.7
 PyMySQL==1.1.0
 pyparsing==3.1.1
@@ -280,6 +284,7 @@ PyPika==0.48.9
 pyrsistent==0.19.3
 pysbd==0.3.4
 pyspark==3.3.2
+pyspark-ai==0.1.20
 python-daemon==3.0.1
 python-dateutil==2.8.2
 python-dotenv==1.0.0
@@ -351,7 +356,7 @@ termcolor==2.3.0
 terminado==0.17.1
 text-unidecode==1.3
 threadpoolctl==3.2.0
-tiktoken==0.4.0
+tiktoken==0.5.2
 tinycss2==1.2.1
 tokenizers==0.15.0
 toml==0.10.2

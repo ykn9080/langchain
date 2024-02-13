@@ -5,17 +5,17 @@ from langchain.agents import initialize_agent
 from langchain.utilities import SerpAPIWrapper
 from langchain.tools import DuckDuckGoSearchRun
 from langchain.memory import ConversationBufferMemory
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import PyPDFLoader
 import pandas as pd
-from api import apikey
+from config import getOpenai
 import warnings
 warnings.filterwarnings("ignore")
 
-apikey.getOpenai()
+getOpenai()
 
 search_tool = DuckDuckGoSearchRun()
 
