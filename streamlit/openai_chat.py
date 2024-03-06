@@ -24,7 +24,6 @@ if prompt := st.chat_input():
     #     st.info("Please add your OpenAI API key to continue.")
     #     st.stop()
     openai_api_key = getOpenai()
-    openai.api_key = openai_api_key
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
     response = openai.chat.completions.create(
