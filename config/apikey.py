@@ -40,3 +40,11 @@ def gethuggingface():
     os.environ["HUGGINGFACEHUB_API_TOKEN"] = huggingface_key
     os.environ["HUGGINGFACE_ACCESS_TOKEN"] = huggingface_key
     return huggingface_key
+
+def getGradient(type='workspace'):
+    load_dotenv()
+    gradient_key = os.getenv('GRADIENT_ACCESS_TOKEN')
+    gradient_workspace = os.getenv('GRADIENT_WORKSPACE_ID')
+    os.environ["GRADIENT_ACCESS_TOKEN"] = gradient_key
+    os.environ["GRADIENT_WORKSPACE_ID"] = gradient_workspace
+    return gradient_workspace if type == 'workspace' else gradient_key
